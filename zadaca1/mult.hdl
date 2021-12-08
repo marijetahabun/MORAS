@@ -1,0 +1,62 @@
+CHIP mult
+{
+	IN a[16], b[16];
+	OUT out[16];
+	PARTS:
+	
+	// 14 BSL
+	Or16(a[0] = false, a[1..15] = a[0..14], b = false, out = o1);
+	Or16(a[0..1] = false, a[2..15]= a[0..13], b = false, out = o2);
+	Or16(a[0..2] = false, a[3..15] = a[0..12], b = false, out = o3);
+	Or16(a[0..3] = false, a[4..15] = a[0..11], b = false, out = o4);
+	Or16(a[0..4] = false, a[5..15] = a[0..10], b = false, out = o5);
+	Or16(a[0..5] = false, a[6..15] = a[0..9], b = false, out = o6);
+	Or16(a[0..6] = false, a[7..15] = a[0..8], b = false, out = o7);
+	Or16(a[0..7] = false, a[8..15] = a[0..7], b = false, out = o8);
+	Or16(a[0..8] = false, a[9..15] = a[0..6], b = false, out = o9);
+	Or16(a[0..9] = false, a[10..15] = a[0..5], b = false, out = o10);
+	Or16(a[0..10] = false, a[11..15] = a[0..4], b = false, out = o11);
+	Or16(a[0..11] = false, a[12..15] = a[0..3], b = false, out = o12);
+	Or16(a[0..12] = false, a[13..15] = a[0..2], b = false, out = o13);
+	Or16(a[0..13] = false, a[14..15] = a[0..1], b = false, out = o14);
+	Or16(a[0..14] = false, a[15] = a[0], b = false, out = o15);
+	
+	// S - 0
+	Or16(a = false, b = false, out = on);
+
+        //Biranje
+	Mux16(a = on, b = a, sel = b[0], out = r0);
+	Mux16(a = on, b = o1, sel = b[1], out = r1);
+	Mux16(a = on, b = o2, sel = b[2], out = r2);
+	Mux16(a = on, b = o3, sel = b[3], out = r3);
+	Mux16(a = on, b = o4, sel = b[4], out = r4);
+	Mux16(a = on, b = o5, sel = b[5], out = r5);
+	Mux16(a = on, b = o6, sel = b[6], out = r6);
+	Mux16(a = on, b = o7, sel = b[7], out = r7);
+	Mux16(a = on, b = o8, sel = b[8], out = r8);
+	Mux16(a = on, b = o9, sel = b[9], out = r9);
+	Mux16(a = on, b = o10, sel = b[10], out = r10);
+	Mux16(a = on, b = o11, sel = b[11], out = r11);
+	Mux16(a = on, b = o12, sel = b[12], out = r12);
+	Mux16(a = on, b = o13, sel = b[13], out = r13);
+	Mux16(a = on, b = o14, sel = b[14], out = r14);
+	Mux16(a = on, b = o15, sel = b[15], out = r15);
+
+	//Zbrajanje	
+	Add16(a = r0, b = r1, out = k0);
+	Add16(a = r2, b = k0, out = k1);
+	Add16(a = r3, b = k1, out = k2);
+	Add16(a = r4, b = k2, out = k3);
+	Add16(a = r5, b = k3, out = k4);
+	Add16(a = r6, b = k4, out = k5);
+	Add16(a = r7, b = k5, out = k6);
+	Add16(a = r8, b = k6, out = k7);
+	Add16(a = r9, b = k7, out = k8);
+	Add16(a = r10, b = k8, out = k9);
+	Add16(a = r11, b = k9, out = k10);
+	Add16(a = r12, b = k10, out = k11);
+	Add16(a = r13, b = k11, out = k12);
+	Add16(a = r14, b = k12, out = k13);
+	Add16(a = r15, b = k13, out = out);
+
+}
