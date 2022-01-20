@@ -1,0 +1,22 @@
+function RJ.fibonacci 0
+push argument 0
+push constant 2
+lt
+if-goto smaller
+goto greater
+
+label smaller
+push argument 0
+return
+
+label greater
+push argument 0
+push constant 2
+sub
+call RJ.fibonacci 1
+push argument 0
+push constant 1
+sub
+call RJ.fibonacci 1
+add
+return  

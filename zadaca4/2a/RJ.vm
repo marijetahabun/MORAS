@@ -1,0 +1,47 @@
+function RJ.mid 3
+
+push argument 0
+push argument 1
+gt
+if-goto AveceB
+goto AmanjeB
+
+label AveceB
+push argument 1
+push argument 2
+gt
+if-goto ispisiB
+goto AveceC
+
+label AveceC
+push argument 0
+push argument 2
+gt
+if-goto ispisiC
+goto ispisiA
+
+label AmanjeB
+push argument 1
+push argument 2
+gt
+if-goto AiliC
+goto ispisiB
+
+label AiliC
+push argument 0
+push argument 2
+gt
+if-goto ispisiA
+goto ispisiC
+
+label ispisiA
+push argument 0
+return
+
+label ispisiB
+push argument 1
+return
+
+label ispisiC
+push argument 2
+return
