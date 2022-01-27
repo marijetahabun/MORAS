@@ -1,0 +1,30 @@
+class Main
+{
+	function void main()
+	{
+		var Vint v, w;
+		var boolean i, j;
+
+		let v = Vint.new(4);
+		do v.set(0,1);
+		do v.set(1,2);
+		do v.set(2,3);
+		do v.set(3,4);
+
+		let w = Vint.new(4);
+		do w.set(0,1);
+		do w.set(1,2);
+		do w.set(3,4);
+		do w.set(2,3);
+
+
+		do Output.printInt(v.get(2));
+		do Output.println();
+		do Output.printInt(v.len());
+		do Output.println();
+
+
+				
+		return;
+	}
+}

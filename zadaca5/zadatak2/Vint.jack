@@ -1,0 +1,136 @@
+class Vint
+{
+	field Array A;
+	field int vel;
+
+	method int len()
+	{
+		return vel;
+	}
+
+	constructor Vint new(int n)
+	{
+		if(n<0)
+		{
+			let A = Array.new(vel);
+		}
+		else
+		{
+			let vel = Vint.potencija(2, n);
+			let A = Array.new(vel);
+		}
+		return this;
+	}
+
+	method void set(int k, int v)
+	{
+		let A[k] = v;
+		return;
+	}
+
+	method int get(int k)
+	{
+		return A[k];
+	}
+
+	method void resize(int m)
+	{
+		var int novavel, usp, i, j;
+		var Array B;
+		let novavel = Vint.potencija(2,m);
+		let usp = Vint.manji(vel,novavel);
+
+		let B = Array.new(usp);
+		let i = 0;
+		while(i<usp)
+		{
+			let B[i] = A[i];
+			let i = i + 1;
+		}
+		let A = B;
+		let vel = novavel;
+		return;
+	}
+
+	function boolean is_eq(Vint B, Vint C)
+	{
+		var int i;
+		if(~(B.len() = C.len()))
+		{
+			return false;
+		}
+		else
+		{
+			let i = 0;
+			while(i<B.len())
+			{
+				if(~(A.get(i) = B.get(i)))
+				{
+					return false;
+				}
+				else
+				{
+					let i = i + 1;
+				}
+			}
+		}
+		return true;
+	}
+
+	method Array getArray()
+	{
+		return A;
+	}
+
+	function boolean elems(Vint B, Vint C)
+	{
+		var int i;
+		var Array D, E;
+		if(~(B.len() = C.len()))
+		{
+			return false;
+		}
+		else
+		{
+			let D = B.getArray();
+			let E = C.getArray();
+			do QS.sort(D,0,B.len());
+			do QS.sort(E,0,B.len());
+			let i = 0;
+			while(i<B.len())
+			{
+				if(~(D[i] = E[i]))
+				{
+					return false;
+				}
+				let i = i + 1;
+			}
+		}
+		return true;
+	}
+
+	function int potencija(int a, int x)
+	{
+		var int i, pot;
+		let i = 0;
+		let pot = 1;
+		while(i<x)
+		{
+			let pot = pot * a;
+			let i = i + 1;
+		}
+		return pot;
+	}
+	
+	function int manji(int a, int b)
+	{
+		if(a>b)
+		{
+			return b;
+		}
+		else
+		{
+			return a;
+		}
+	}	
+}
